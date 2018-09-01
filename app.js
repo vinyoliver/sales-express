@@ -6,8 +6,10 @@ var logger = require('morgan');
 
 const mongoose = require('mongoose');
 
-//message
 const session = require('express-session');
+const expressValidator = require('express-validator');
+
+//message
 const flash = require('connect-flash');
 const hbs = require('express-handlebars');
 
@@ -39,6 +41,9 @@ app.use(session({
   saveUninitialized: true,
 }))
 
+
+//configure validator
+app.use(expressValidator());
 
 //express message middleware
 app.use(flash());

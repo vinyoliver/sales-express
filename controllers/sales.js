@@ -15,20 +15,34 @@ const SalesController = {
     },
 
     save: (req, res) => {
-        const id = req.body._id;
-        const sale = instanceSale(req.body);
+        req.checkBody('title', 'Title is required').notEmpty();
+        req.checkBody('price', 'Price is required').notEmpty();
+        req.checkBody('url', 'URL is required').notEmpty();
 
-        if (id) {
-            SaleModel.findOneAndUpdate({ _id: id }, sale).then(data => {
-                req.flash('success', 'Saved successfuly');
-                res.redirect('/');
-            })
-        } else {
-            const model = new SaleModel(sale);
-            model.save().then(() => {
-                req.flash('success', 'Saved successfuly');
-                res.redirect('/');
-            });
+        var errors = req.validationErrors();
+        if (errors) {
+            errors.forEach(err => req.flash('danger', err.msg));
+            req.session.errors = errors;
+            let backUrl = req.header('Referer') || '/';
+            res.redirect(backUrl);
+            //res.render('sales/form', {data: req.body}); TODO...
+            
+        }else{
+            const id = req.body._id;
+            const sale = instanceSale(req.body);
+
+            if (id) {
+                SaleModel.findOneAndUpdate({ _id: id }, sale).then(data => {
+                    req.flash('success', 'Saved successfuly');
+                    res.redirect('/');
+                })
+            } else {
+                const model = new SaleModel(sale);
+                model.save().then(() => {
+                    req.flash('success', 'Saved successfuly');
+                    res.redirect('/');
+                });
+            }
         }
     },
 
@@ -59,5 +73,6 @@ instanceSale = (body) => {
         category: body.category
     }
 }
+
 
 module.exports = SalesController;
