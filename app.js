@@ -48,13 +48,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-
-
-app.all('/test', function(req, res){
-  req.flash('info', 'another message');
-  res.redirect('/')
-});
-
 // view engine setup
 app.engine('hbs', hbs({
     extname: 'hbs', 

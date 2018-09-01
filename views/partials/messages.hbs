@@ -1,7 +1,12 @@
 
 {{#each messages as |values key|}}
   {{#each values as |childValue|}}
-    <span>{{key}} - {{childValue}}</span><br>
+    <div class="alert alert-{{key}}" role="alert">
+        {{childValue}}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
   {{/each}}
 {{/each}}
 {{!-- {{{messages}}} --}}
