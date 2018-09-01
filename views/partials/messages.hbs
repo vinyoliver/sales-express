@@ -1,0 +1,7 @@
+
+{{#each messages as |values key|}}
+  {{#each values as |childValue|}}
+    <span>{{key}} - {{childValue}}</span><br>
+  {{/each}}
+{{/each}}
+{{!-- {{{messages}}} --}}
