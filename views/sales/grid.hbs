@@ -1,12 +1,17 @@
 <div class="row">
     {{#each data}}
     <div class="col-3">
-        <div class="card" >
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{this.description}}</h5>
+                <h5 class="card-title">{{this.title}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">$ {{this.price}}</h6>
                 <p class="card-text">{{this.description}}</p>
-                <a href="{{this.url}}" target="_blank" class="card-link">Click here</a>
+                <a href="{{this.url}}" target="_blank" class="card-link">More Details</a>
+
+            </div>
+            <div class="card-footer text-muted">
+                <a href="sales/{{this._id}}" class="btn btn-primary">Edit</a>
+                <button onclick="removeItem('sales/{{this._id}}')" class="btn btn-danger">Remove</button>
             </div>
         </div>
     </div>

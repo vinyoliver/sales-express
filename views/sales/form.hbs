@@ -1,29 +1,34 @@
-<form action="/sales/add" method="POST" class="form-group">
+<form action="/sales" method="POST" class="form-group">
     <div class="form-group">
         <label for="name">Title</label>
-        <input type="text" class="form-control" name="title" id="title">
+        <input type="text" class="form-control" name="title" id="title" value={{data.title}}>
     </div>
     <div class="form-group">
         <label for="name">Description</label>
-        <textarea class="form-control" name="description" id="description"></textarea>
+        <textarea class="form-control" name="description" id="description">{{data.description}}</textarea>
     </div>
     <div class="form-group">
         <label for="email">Price</label>
-        <input type="text" class="form-control" name="price" id="price">
+        <input type="text" class="form-control" name="price" id="price" value={{data.price}}>
     </div>
     <div class="form-group">
         <label for="email">URL</label>
-        <input type="text" class="form-control" name="url" id="url">
+        <input type="text" class="form-control" name="url" id="url" value={{data.url}}>
     </div>
-    
+
     <div class="form-group">
         <label for="email">Category</label>
-        <select name="category" id="category" class="custom-select">
+        <select name="category" id="category" class="custom-select" value={{data.category}}>
+            <option value="{{data.category}}" hidden="hidden" selected="selected">{{data.category}}</option>
             <option value="App">App</option>
             <option value="Game">Game</option>
             <option value="Movie">Movie</option>
             <option value="Shoes">Shoes</option>
         </select>
     </div>
+    {{#if data._id}}
+        <input type="hidden" name="_id" value="{{data._id}}" /> 
+    {{/if}}
+
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
