@@ -13,6 +13,9 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const hbs = require('express-handlebars');
 
+const passport = require('passport')
+
+//routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var salesRouter = require('./routes/sales');
@@ -33,7 +36,6 @@ db.on('error', (err) => {
 });
 
 
-
 //Express session
 app.use(session({
   secret: 'keyboard cat',
@@ -52,6 +54,19 @@ app.use(function (req, res, next) {
   res.locals.messages = req.flash();
   next();
 });
+
+//passport configuration
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
+//set the user in the response
+app.get('*', (req, res, next) => {
+  res.locals.user = req.user || null;
+  console.log('USER', res.locals.user);
+  next();
+});
+
 
 // view engine setup
 app.engine('hbs', hbs({
