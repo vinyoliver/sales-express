@@ -60,14 +60,6 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-//set the user in the response
-app.get('*', (req, res, next) => {
-  res.locals.user = req.user || null;
-  console.log('USER', res.locals.user);
-  next();
-});
-
-
 // view engine setup
 app.engine('hbs', hbs({
     extname: 'hbs', 
@@ -86,9 +78,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//set the user in the response
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  console.log('USER', res.locals.user);
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sales', salesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
