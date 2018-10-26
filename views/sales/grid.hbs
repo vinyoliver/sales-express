@@ -3,9 +3,12 @@
     {{#each data}}
     <div class="col-3">
         <div class="card">
-            <div class="card-body">
+             <div class="card-header bg-info text-center">
                 <h5 class="card-title">{{this.title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">$ {{this.price}}</h6>
+            </div>
+            <div class="card-body">
+                
+                <h6 class="card-subtitle mb-2 text-muted">Price: ${{this.price}}</h6>
                 <p class="card-text">{{this.description}}</p>
                 <a href="{{this.url}}" target="_blank" class="card-link">More Details</a>
     
