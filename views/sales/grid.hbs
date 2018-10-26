@@ -1,3 +1,4 @@
+
 <div class="row">
     {{#each data}}
     <div class="col-3">
@@ -10,7 +11,7 @@
     
             </div>
             <div class="card-footer text-muted">
-                {{#if user}}
+                {{#if @root.user}}
                 <a href="sales/{{this._id}}" class="btn btn-primary">Edit</a>
                 <button onclick="removeItem('sales/{{this._id}}')" class="btn btn-danger">Remove</button>
                 {{/if}}

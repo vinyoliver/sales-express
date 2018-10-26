@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Sales App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -15,6 +15,10 @@
       <li class="nav-item">
         <a class="nav-link" href="/sales/new">New Sale</a>
       </li>
+    </ul>
+  </div>
+
+  <ul class="nav justify-content-end">
       {{#unless user}}
         <li class="nav-item">
           <a class="nav-link" href="/users/sign-up">Sign Up</a>
@@ -27,6 +31,8 @@
           <a class="nav-link" href="/users/logout">Sign Out</a>
         </li>
       {{/unless}}
-    </ul>
-  </div>
+
+  </ul>
+
+    
 </nav>
