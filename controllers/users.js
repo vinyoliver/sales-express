@@ -36,8 +36,6 @@ const UserController = {
         } else {
             const model = new UserModel(req.body);
 
-
-            //TODO change for async await...
             bcrypt.hash(model.password, 10, (err, hashValue) => {
                 if (err) {
                     //...

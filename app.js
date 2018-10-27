@@ -11,6 +11,8 @@ const expressValidator = require('express-validator');
 
 //message
 const flash = require('connect-flash');
+
+//handlebars
 const hbs = require('express-handlebars');
 
 const passport = require('passport')
@@ -65,6 +67,7 @@ app.engine('hbs', hbs({
     extname: 'hbs', 
     defaultLayout: 'layout', 
     layoutsDir: __dirname + '/views',
+    helpers: require(require('path').join(__dirname, 'lib/helpers.js')).helpers,
     partialsDir  : [
         __dirname + '/views/partials',
     ]

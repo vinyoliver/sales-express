@@ -14,10 +14,10 @@
     
             </div>
             <div class="card-footer text-muted">
-                {{#if @root.user}}
+                {{#when @root.user._id '==' this.userId}}
                 <a href="sales/{{this._id}}" class="btn btn-primary">Edit</a>
                 <button onclick="removeItem('sales/{{this._id}}')" class="btn btn-danger">Remove</button>
-                {{/if}}
+                {{/when}}
             </div>
         </div>
     </div>

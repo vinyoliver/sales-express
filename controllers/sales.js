@@ -30,6 +30,7 @@ const SalesController = {
         }else{
             const id = req.body._id;
             const sale = instanceSale(req.body);
+            sale.userId = res.locals.user._id.toString();
 
             if (id) {
                 SaleModel.findOneAndUpdate({ _id: id }, sale).then(data => {
